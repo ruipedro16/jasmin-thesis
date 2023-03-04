@@ -1,0 +1,141 @@
+\documentclass[11pt, a4paper, twoside]{book}
+
+\raggedbottom%
+
+\usepackage[english]{babel}
+
+\usepackage{upthesis}
+
+\usepackage[pdfpagelabels=false]{hyperref}
+
+\hypersetup{pdftitle={Speculative Execution Resilient Cryptography}, 
+    pdfkeywords ={palavras chave},
+    pdfsubject = {assunto},
+    bookmarksnumbered=true,
+    pdfauthor ={Rui Fernandes}, 
+    plainpages=false, 
+    pdfborder={0 0 0},
+    colorlinks,
+    breaklinks=true,
+    linkcolor=Sepia,
+    urlcolor=NavyBlue,
+    citecolor=Sepia,
+}
+
+\urlstyle{same}
+
+\usepackage{tcolorbox}
+\usepackage[capitalise,noabbrev]{cleveref}
+\usepackage[bottom]{footmisc}
+\usepackage{subcaption}
+\usepackage{csquotes}
+\usepackage{nameref}
+\usepackage{framed}
+\usepackage{amssymb,amsthm}
+\usepackage{mathtools}
+
+%% For algorithms
+%% https://www.overleaf.com/learn/latex/Algorithms
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{pdfpages}
+\usepackage{parcolumns}
+
+% Cryptography game based proofs
+\usepackage[
+    lambda,
+    advantage,
+    operators,
+    sets,
+    adversary,
+    landau,
+    probability,
+    notions,
+    logic,
+    ff,
+    mm,
+    primitives,
+    events,
+    complexity,
+    oracles,
+    asymptotics,
+    keys
+]{cryptocode}
+\createpseudocodeblock{pcb}{center, boxed}{}{}{}
+
+
+\usepackage{bussproofs} % For typing rules
+\usepackage{stmaryrd}
+
+\newcommand{\minus}{\scalebox{0.75}[1.0]{$-$}} % For typing rules
+
+\usepackage{fancyvrb} % To center verbatim
+
+% Double-headed right-arrows
+\newcommand\dhxrightarrow[2][]{%
+  \mathrel{\ooalign{$\xrightarrow[#1\mkern4mu]{#2\mkern4mu}$\cr%
+  \hidewidth$\rightarrow\mkern4mu$}}
+}
+
+\usepackage{tcolorbox}
+
+\AtBeginEnvironment{displayquote}{\itshape}
+
+
+\lstdefinestyle{c}{language=C,
+    morekeywords={uint64_t}
+}
+
+\lstdefinestyle{jasmin}{
+    morekeywords={abbrev,abort,abstract,admit,admitted,algebra,alias,apply,as,assert,assumption,async,
+                  auto,axiom,axiomatized,beta,by,byequiv,byphoare,bypr,byupto,call,case,cbv,cfold,change,
+                  choare,class,clear,clone,congr,conseq,const,cost,debug,declare,delta,do,done,dump,eager,
+                  ecall,elif,elim,else,end,equiv,eta,exact,exfalso,exists,exit,exlim,expect,export,fel,field,
+                  fieldeq,first,fission,for,forall,from,fun,fusion,gen,glob,goal,have,hint,hoare,idtac,if,import,
+                  in,include,inductive,inline,instance,instantiate,interleave,iota,is,islossless,kill,last,
+                  left,lemma,let,local,locate,logic,match,modpath,module,move,nosmt,notation,of,op,phoare,
+                  pose,pragma,pred,print,proc,progress,proof,prover,qed,rcondf,rcondt,realize,reflexivity,
+                  remove,rename,replace,require,return,rewrite,right,ring,ringeq,rnd,rndsem,rwnormal,
+                  schema,search,section,seq,sim,simplify,skip,smt,solve,sp,split,splitwhile,strict,subst,
+                  suff,swap,symmetry,then,theory,time,timeout,transitivity,trivial,try,type,undo,unroll,
+                  var,while,with,wlog,wp,zeta,fn,reg,u64,int,declassify,public,secret,transient,init\_msf,ptr},
+    moredelim=[s][\color{ForestGreen}]{/*}{*/}
+}
+
+\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
+
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}
+\algrenewcommand\algorithmicensure{\textbf{Output:}}
+
+\begin{document}
+
+% \includepdf[pages=-]{cover.pdf}
+
+\beforepreface%
+
+\include{acknowledgements}
+\include{abs}
+
+\afterpreface%
+
+\include{chap-intro}
+\include{chap-background}
+\include{chap-high-assurance}
+\include{chap-jasmin}
+\include{chap-impl}
+\include{chap-concl}
+
+%% Appendix
+\appendix
+\include{app-notation}
+\include{app-bench}
+
+%% references
+\cleardoublepage%
+\phantomsection%
+\addcontentsline{toc}{chapter}{\bibname}
+\bibliographystyle{plainnaturlAuthor}
+\bibliography{refs}
+
+\end{document}
